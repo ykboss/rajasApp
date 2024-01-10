@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text and Image Processing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text and Image Processing</h1>
+        <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data">
+            <div>
+                <input type="radio" id="textOption" name="inputOption" value="text" checked class="custom-radio">
+                <label for="textOption">Text</label>
+                <textarea id="text" name="text"></textarea>
+            </div>
+            <div>
+                <input type="radio" id="imageOption" name="inputOption" value="image" class="custom-radio">
+                <label for="imageOption">Image</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit">Process</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="error-message">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const textOption = document.getElementById('textOption');
+                const imageOption = document.getElementById('imageOption');
+                const textInput = document.getElementById('text');
+                const imageInput = document.getElementById('image');
+
+                // Initial state: Show both text and image input fields
+                textInput.style.display = 'none';
+                imageInput.style.display = 'none';
+
+                textOption.addEventListener('change', function () {
+                    textInput.style.display = 'block';
+                    imageInput.style.display = 'none';
+                });
+
+                imageOption.addEventListener('change', function () {
+                    imageInput.style.display = 'block';
+                    textInput.style.display = 'none';
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

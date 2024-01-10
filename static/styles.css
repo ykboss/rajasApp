@@ -1,0 +1,132 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #bff4d5;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+textarea, input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #dc3545;
+    margin-top: 5px;
+    text-align: center;
+}
+
+
+/* Style the radio buttons */
+input[type="radio"] {
+    display: none; /* Hide the default radio buttons */
+}
+
+/* Style the custom radio buttons */
+.custom-radio {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px; /* Adjust the space between the radio button and label */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.custom-radio:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px; /* Adjust the vertical alignment */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff; /* Border color */
+    border-radius: 50%;
+    background-color: #007bff; /* Background color when not selected */
+    transition: background-color 0.3s ease;
+}
+
+/* Style the label text for radio buttons */
+.custom-radio label {
+    margin-left: 10px; /* Adjust the space between the radio button and label text */
+}
+
+/* Style the custom radio button when selected */
+.custom-radio input:checked + label:before {
+    background-color: #007bff; /* Background color when selected */
+    border-color: #007bff; /* Border color when selected */
+    color: #fff; /* Text color when selected */
+}
+/* Add these styles to your styles.css file */
+
+/* Style the option boxes */
+.option-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Style the custom radio buttons */
+.custom-radio {
+    display: none; /* Hide the default radio buttons */
+}
+
+.custom-radio + label {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+.custom-radio + label:hover {
+    background-color: #0056b3;
+}
+
+/* Style the custom radio button when selected */
+.custom-radio:checked + label {
+    background-color: #0056b3;
+}
