@@ -3,54 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text and Image Processing</title>
+    <title>Neural Ninja</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
 </head>
+
 <body>
     <div class="container">
-        <h1>Text and Image Processing</h1>
-        <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data">
-            <div>
-                <input type="radio" id="textOption" name="inputOption" value="text" checked class="custom-radio">
-                <label for="textOption">Text</label>
-                <textarea id="text" name="text"></textarea>
-            </div>
-            <div>
-                <input type="radio" id="imageOption" name="inputOption" value="image" class="custom-radio">
-                <label for="imageOption">Image</label>
-                <input type="file" id="image" name="image" accept="image/*">
-            </div>
-            <button type="submit">Process</button>
-        </form>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="error-message">
-                    {{ messages[0] }}
-                </div>
-            {% endif %}
-        {% endwith %}
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const textOption = document.getElementById('textOption');
-                const imageOption = document.getElementById('imageOption');
-                const textInput = document.getElementById('text');
-                const imageInput = document.getElementById('image');
+      <h1>FIR Analysis System</h1>
+      <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data">
+        <div>
 
-                // Initial state: Show both text and image input fields
-                textInput.style.display = 'none';
-                imageInput.style.display = 'none';
-
-                textOption.addEventListener('change', function () {
-                    textInput.style.display = 'block';
-                    imageInput.style.display = 'none';
-                });
-
-                imageOption.addEventListener('change', function () {
-                    imageInput.style.display = 'block';
-                    textInput.style.display = 'none';
-                });
-            });
-        </script>
+          <select id="inputOption" name="inputOption">
+            <option value="" disabled selected>How would you like to proceed?</option> <option value="text">Text</option>
+            <option value="image">Image</option>
+          </select>
+        </div>
+        <div id="textInput" style="display: none;">
+          <textarea id="text" name="text"></textarea>
+        </div>
+        <div id="imageInput" style="display: none;">
+            <input type="file" id="image" name="image" accept="image/*" value="Upload Image">
+        </div>
+        <button type="submit" id="processButton" style="display: none;">Process</button>
+      </form>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="error-message">
+            {{ messages[0] }}
+          </div>
+        {% endif %}
+      {% endwith %}
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const inputOption = document.getElementById('inputOption');
+          const textInput = document.getElementById('textInput');
+          const imageInput = document.getElementById('imageInput');
+          const processButton = document.getElementById('processButton');
+  
+          inputOption.addEventListener('change', function () {
+            const selectedValue = this.value;
+            textInput.style.display = selectedValue === 'text' ? 'block' : 'none';
+            imageInput.style.display = selectedValue === 'image' ? 'block' : 'none';
+            processButton.style.display = selectedValue ? 'block' : 'none';
+          });
+        });
+      </script>
     </div>
-</body>
-</html>
+  </body>
+  </html>
+  
