@@ -5,7 +5,7 @@ from PIL import Image
 import os
 
 app = Flask(__name__)
-app.secret_key = process.env.SECRET_KEY
+app.secret_key = 'super_secret_key'
 
 def nlpFunc(text):
     result_dict = {"Example Key": text}
@@ -45,5 +45,5 @@ def process():
 
     return render_template('result.html', result=result)
 
-if __name__ == '__main__':
-    app.run(debug=false, host='0.0.0.0')
+# if __name__ == '__main__':
+#     app.run(debug=False, host='0.0.0.0')
