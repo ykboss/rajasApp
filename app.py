@@ -5,7 +5,7 @@ from PIL import Image
 import os
 
 app = Flask(__name__)
-app.secret_key = 'super_secret_key'
+app.secret_key = process.env.SECRET_KEY
 
 def nlpFunc(text):
     result_dict = {"Example Key": text}
